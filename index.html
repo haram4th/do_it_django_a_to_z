@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>황성민의 홈페이지</title>
+    <link rel="stylesheet" href="./bootstrap4/css/bootstrap.min.css" type="text/css">
+    <script type="text/javascript" src="add_two_numbers.js"></script>
+    <script type="text/javascript" src="whatTimeIsIt.js"></script>
+    
+
+</head>
+<body>
+
+    <!-- 네이게이션 바 만들기_부트스트랩 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Do It Django</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="./index.html">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./blog_list.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./about_me.html">About Me</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Dropdown link
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <!-- 네이게이션 바 만들기_부트스트랩 끝-->
+
+    <h1>첫번째 크기 헤드라인</h1>
+    <h2>첫번째 크기 헤드라인</h2>
+    <h3>첫번째 크기 헤드라인</h3>
+    <h4>첫번째 크기 헤드라인</h4>
+    <h5>첫번째 크기 헤드라인</h5>
+
+    <button onclick="whatTimeIsIt()">현재시간</button>
+    <hr/>
+
+    <label for="inputA">a</label>
+    <input id="inputA" value=1 onkeyup="doSomething()">
+    <label for="inputB">b</label>
+    <input id="inputB" value=2 onkeyup="doSomething()">
+    <p><span id="valueA">1</span> + <span id="valueB">2</span> = 
+        <span id="valueC">3</span>입니다.</p>
+
+    <p>문단은 p로 쓰세요.</p>
+    <a href="https://www.google.com">Go to google</a>
+    <hr/>
+    <img src="https://image.jtbcplus.kr/data/contents/jam_photo/202306/10/5ebc5232-e43c-4f9c-83ae-66ff5679726a.jpg"
+             width = "600px" alt="푸바오">
+
+</body>
+</html>
