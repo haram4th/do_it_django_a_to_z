@@ -1,86 +1,82 @@
 <!DOCTYPE html>
-{% load static %}
-
 <html lang="ko">
-
+{% load static %}
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>{% block head_title %}Blog{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
     <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
- 
-    {% include 'blog/navbar.html' %}
 
-    <div class="container my-3">
-        <div class="row">
-                <!-- post영역  -->
-            <div class="col-md-8 col-lg-9" id="main-area" style="border: solid 1px black;">
-                {% block main_area %}
+{% include 'blog/navbar.html' %}
 
-                {% endblock %}
+<div class="container my-3">
+    <div class="row" style="border: solid 1px yellow;">
+            <!-- post영역  -->
+        <div class="col-md-8 col-lg-9" id="main-area" style="border: solid 1px black;">
+            {% block main_area %}
+            {% endblock %}
+            <!-- post영역 끝  -->
+        <!-- </div> -->
 
-                <!-- post영역 끝  -->
-            
                 <!-- search 영역 시작 -->
-                <div class="col-md-4 col-lg-3">
+            <div class="col-md-4 col-lg-3" style="border: solid 1px red;">
 
                     <!-- Search Widget -->
-                    <div class="card my-4">
-                        <h5 class="card-header">Search</h5>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-append">
-                                    <button class="btn btn-secondary" type="button">Go!</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Categories Widget -->
-                    <div class="card my-4" id="categories-card">
-                        <h5 class="card-header">Categories</h5>
-                        <div class="card-body">
-                            <div class="row">
-                                <ul>
-                                    {% for category in categories %}   
-                                        <li>
-                                            <a href="{{category.get_absolute_url}}">{{category}}({{category.post_set.count}})</a>
-                                        </li>
-                                    {% endfor %}
-                                        <li>
-                                            <a href="/blog/category/no_category/">미분류 ({{no_category_post_count}})</a>
-                                        </li>
-                                </ul>
-                            
-                                
-                            </div>
+                <div class="card my-4">
+                    <h5 class="card-header">Search</h5>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="button">Go!</button>
+                            </span>
                         </div>
                     </div>
                 </div>
-                <!-- search 영역 끝 -->
-            </div>
-        </div>
 
+                <!-- Categories Widget -->
+                <div class="card my-4" id="categories-card" >
+                    <h5 class="card-header">Categories</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <ul>
+                                {% for category in categories %}   
+                                    <li>
+                                        <a href="{{category.get_absolute_url}}">{{category}}({{category.post_set.count}})</a>
+                                    </li>
+                                {% endfor %}
+                                    <li>
+                                        <a href="/blog/category/no_category/">미분류 ({{no_category_post_count}})</a>
+                                    </li>
+                            </ul>
 
-        {% include 'blog/footer.html' %}
-
-        <!-- 부트스트랩 자바스크립트 -->
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-            integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
-            crossorigin="anonymous"></script>
-        <!-- 부트스트랩 자바스크립트 끝 -->
+                        </div>
+                    </div>
+                </div>
+            </div>    <!-- search 영역 끝 -->
+        </div>    
     </div>
+</div> 
+
+
+    {% include 'blog/footer.html' %}
+
+    <!-- 부트스트랩 자바스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+        crossorigin="anonymous"></script>
+    <!-- 부트스트랩 자바스크립트 끝 -->
+    
 </body>
 
 </html>
