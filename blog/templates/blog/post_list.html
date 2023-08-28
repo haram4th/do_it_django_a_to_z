@@ -5,6 +5,11 @@
     Blog {% if category %}
             <span class="badge badge-secondary">{{category}}</span>
          {% endif %}
+    {% if tag %}
+        <span class="badge badge-light"><i class="fas fa-tags"></i>
+            {{tag}}({{tag.post_set.count}})
+        </span>
+    {% endif %}
 </h1>
 
                 <!-- Blog Post -->
@@ -41,7 +46,7 @@
                             <br/>
                             <br/>
                         {% endif %}
-                        
+
                         <a href="{{p.get_absolute_url}}" class="btn btn-primary">Read More &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
