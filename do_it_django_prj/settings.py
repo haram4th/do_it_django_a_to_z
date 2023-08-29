@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap4",
     "markdownx",
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google', # 구글 로그인 사용
 
     'blog',
     'single_pages',
@@ -56,6 +62,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'APP': { 'client_id' : '322078183097-4u4aufbnt4ueu02mgj8gfg6fu79s03i5.apps.googleusercontent.com',
+#                  'secret' : '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',
+#         },
+        
+#     }  
+# }
+
+
 
 ROOT_URLCONF = 'do_it_django_prj.urls'
 
@@ -77,6 +94,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'do_it_django_prj.wsgi.application'
 
+
+DEFAULT_AUTO_FIELD='django.db.models.BigAutoField'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -132,3 +151,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+LOGIN_REDIRECT_URL = '/blog/'
