@@ -70,6 +70,12 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
+    def get_avatar_url(self):
+        if self.author.socialaccount_set.exists():
+            return self.author.socialaccount_set.first().get_avatar_url()
+        else:
+            return f'https://doitdjango.com/avatar/id/1664/6c63a9fb0ecf60dd/svg/{self.author.email}'
+
     def __str__(self):
         return f'{self.author}::{self.content}'
     
