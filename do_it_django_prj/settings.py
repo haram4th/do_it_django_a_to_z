@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google', # 구글 로그인 사용
+    'allauth.socialaccount.providers.naver',  # 네이버 로그인 사용
 
     'blog',
     'single_pages',
