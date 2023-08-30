@@ -157,6 +157,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+SOCIALACCOUNT_LOGIN_ON_GET=True
+
 SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
