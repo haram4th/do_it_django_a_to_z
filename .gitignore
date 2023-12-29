@@ -164,5 +164,7 @@ cython_debug/
 # migrations/
 # _media/
 
+book_img/
+
 .env.prod 
 .env.prod.db

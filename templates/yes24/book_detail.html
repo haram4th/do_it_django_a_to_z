@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'yes24/css/book.css' %}">
+    
+    <title>{{ book.title_h }}</title>
+</head>
+
+<body class="detail_body">
+    {% if book.title_f != None and book.title_e != None %}
+        <h1>&#91;{{book.title_h}}&#93; {{book.title_f}}{{book.title_m}}</h1>
+        <h3>{{book.title_e}}</h3>
+    {% elif book.title_f != None and book.title_e == None %}
+        <h3>{{book.title_f}}</h3>
+        <h1>&#91;{{book.title_h}}&#93; {{book.title_m}}</h1>
+    {% elif book.title_f == None and book.title_e != None %}
+        <h1>&#91;{{book.title_h}}&#93; {{book.title_m}}</h1>
+        <h3>{{book.title_e}}</h3>
+    {% elif book.title_f == None and book.title_e == None %}
+        <h1>&#91;{{book.title_h}}&#93; {{book.title_m}}</h1>
+    {% endif %}
+
+    <div class="book_detail_grid-container">
+        <!-- 좌측에 이미지 표시 -->
+        <div class="book_detail_grid-item">
+            <img class="img_detail_page" src="{% static 'yes24/book_img/'|add:cover_name %}" alt="{{cover_name}}">
+        </div>
+
+        <!-- 우측에 정보 표시 -->
+        <div class="book_detail_grid-item info">
+            <!-- 추가 정보 -->
+            <p>작가: {{ book.author }}</p>
+            <p>출판사: {{ book.publisher }}</p>
+            <p>출간일: {{ book.pub_date }}</p>
+            <p>가격: {{ book.price }}</p>
+            <p>페이지: {{ book.page }}</p>
+            <p>무게: {{ book.weight }}</p>
+            <p>크기: {{ book.size }}</p>
+            <p>리뷰수: {{ book.n_reviews }}</p>
+            <p>평점: {{ book.rating }}</p>
+            <p>카테고리: {{ book.category }}</p>
+            <p>tags: {{ book.tags }}</p>
+        </div>
+
+        <!-- 하단에 책 소개 -->
+        <div class="book_detail_grid-item introduction" colspan="2">
+            <p>책 소개: {{book.pub_book_intro}}</p>
+        </div>
+        
+    </div>
+
+    <hr>
+
+        <h3>유사 카테고리 추천 도서</h3>
+    
+    <div class="outer-container">
+    {% for item in recommendations %}
+        <div class="inner-container">
+          <img class="recommand" src="{% static 'yes24/book_img/' %}{{ 'bcover_'|add:item|add:'.jpg' }}" alt="{{ 'bcover_'|add:item|add:'.jpg' }}">
+        </div>
+    {% endfor %}
+    </div>
+    
+
+    <br>
+    <a href="{% url 'minipjs:main' %}">Main으로 돌아가기</a>
+</body>
+
+</html>

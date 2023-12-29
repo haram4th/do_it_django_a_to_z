@@ -29,12 +29,18 @@ DEBUG = int(os.environ.get('DEBUG', 1))
 if os.environ.get('DJANGO_ALLOWED_HOSTS'):
     ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
 else:    
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    
+    'blog',
+    'single_pages',
+    'minipjs',
+    'yes24',
+        
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,8 +59,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google', # 구글 로그인 사용
     'allauth.socialaccount.providers.naver',  # 네이버 로그인 사용
 
-    'blog',
-    'single_pages',
+    
 ]
 
 MIDDLEWARE = [
@@ -83,7 +88,7 @@ ROOT_URLCONF = 'do_it_django_prj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -153,7 +158,9 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATICFILES_DIRS = [BASE_DIR / 'static',]
 STATIC_ROOT = os.path.join(BASE_DIR, '_static')
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
@@ -168,7 +175,7 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIALACCOUNT_LOGIN_ON_GET=True
 
-SITE_ID = 2
+SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'

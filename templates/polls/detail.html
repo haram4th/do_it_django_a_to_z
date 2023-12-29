@@ -1,0 +1,15 @@
+<form action="{% url 'polls:vote' question.pk %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>{{question.question_text}}</h1></legend>
+        {% if erroor_message %}<p><strong>{{erroor_message}}</strong></p>{% endif %}
+        {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}">
+            <label for="choice{{forloop.counter}}">{{choice.choice_text}}</label>
+            <br>            
+        {% endfor %}
+    </fieldset>
+    <input type="submit" value="Vote">
+</form>
+
+<a href="{% url 'minipjs:main' %}">Main으로 돌아가기</a>

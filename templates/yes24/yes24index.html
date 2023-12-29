@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카테고리 기반 책 추천 시스템</title>
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'single_pages/css/about_me.css' %}" media="screen">
+    <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'yes24/css/book.css' %}">
+</head>
+
+<body>
+    {% include 'blog/navbar.html' %}
+    <style>
+        /* navbar에 대한 추가적인 스타일 */
+        .navbar {
+            justify-content: start !important; /* !important 추가 */
+        }
+    </style>
+
+    <h1>장르 및 태그 기반 책 추천 시스템</h1>
+    
+    <h3>아래의 책 중 하나를 선택하세요</h3>
+           
+    <div class="grid-container">
+        {% for cover_name, cover_no in covers_10 %}
+            <div class="grid-item">
+                <div class="grid-item">
+                    <a href="{% url 'yes24:book_detail' book_id=cover_no %}?cover_name={{ cover_name }}">
+                        <img class="coverimg" src="{% static 'yes24/book_img/'%}{{cover_name}}" alt="{{ cover_name }}">
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+   
+    <a href="{% url 'minipjs:main' %}">Main으로 돌아가기</a>
+    
+    <div class="fixed-bottom">
+        {% include 'blog/footer.html' %}
+    </div>
+
+<!-- 부트스트랩 자바스크립트 시작 -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+    crossorigin="anonymous"></script>
+<!-- 부트스트랩 자바스크립트 끝 -->
+
+</body>
+
+</html>

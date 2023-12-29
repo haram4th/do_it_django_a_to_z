@@ -1,0 +1,2 @@
+docker exec -it do_it_django_a_to_z2-db-1 psql -U do_it_django_db_user_prod -d do_it_django_prod
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네이버 책 검색</title>
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'single_pages/css/about_me.css' %}" media="screen">
+    <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
+</head>
+
+</head>
+
+<body>
+    {% include 'blog/navbar.html' %}
+
+    <section>
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-6 text-dark">
+
+                    <h1>네이버 책 API를 활용한 책 검색 서비스</h1>
+
+                    <form action="{% url 'minipjs:naver_book' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="keyword">
+                        <input type="submit" value="책 검색하기">
+                    </form>
+
+                    <br>
+                    <hr>
+
+                    <h1>{{keyword}} 관련 책 검색 결과</h1>
+
+                    {{ html_table|safe }}
+
+                    <a href="{% url 'minipjs:main' %}">Main으로 돌아가기</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="fixed-bottom">
+        {% include 'blog/footer.html' %}
+    </div>
+
+
+</body>
+
+</html>

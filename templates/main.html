@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미니프로젝트 메인</title>
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'single_pages/css/about_me.css' %}" media="screen">
+    <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    {% include 'blog/navbar.html' %}
+
+    <section>
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-6 text-dark">
+                    <h1>Django Mini Projects</h1>
+
+                    <div><a href="{% url 'minipjs:calculator' %}">1. calculator</a></div>
+                    <div><a href="{% url 'minipjs:naver_book' %}">2. naver_book_search</a></div>
+                    <!-- <div><a href="/polls">3. Polls</a></div> -->
+                    <div><a href="{% url 'yes24:yes24index' %}">3. yes24best</a></div>
+                    <!-- <div><a href="/books">5. books</a></div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="fixed-bottom">
+        {% include 'blog/footer.html' %}
+    </div>
+</div>
+<!-- 부트스트랩 자바스크립트 시작 -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+    crossorigin="anonymous"></script>
+<!-- 부트스트랩 자바스크립트 끝 -->
+
+</body>
+</html>
